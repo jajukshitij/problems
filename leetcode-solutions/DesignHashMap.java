@@ -10,7 +10,7 @@
     
     Reference:
    
-    Logic is same as that behind an actual HashMap
+    Logic is same as that behind an actual HashMap:
     
     Step 1. Computing hashcode of key,
     Step 2. Calculating array index/bucket from hashcode
