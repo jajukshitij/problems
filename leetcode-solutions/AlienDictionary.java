@@ -27,6 +27,8 @@
    Solution: BFS , Topological Sort
    
    ------------------------ Time Complexity: O(V + E) ------------------------
+                                             V = All unique character in the input
+                                             E = Direct lexicographic relation between characters
 */
 
 import java.util.*;
