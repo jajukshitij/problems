@@ -33,6 +33,9 @@
             }
     Important: when you concatenate keys, make sure to add the dot character between them.
     For instance concatenating Key2, c and d the result key would be Key2.c.d
+    ------------------------------------------------------------------------------------------------------------------------------------
+    ----------------------------------------------------- Time Complexity: O(N) --------------------------------------------------------
+                                                                           N = number of keys in the dictionary
 */
 
 import java.util.HashMap;
