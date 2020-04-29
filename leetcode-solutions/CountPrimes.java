@@ -1,5 +1,5 @@
 /*
-    Problem: Leetcode. Count Primes
+    Problem: Leetcode.204 Count Primes (Easy)
     Count the number of prime numbers less than a non-negative number, n.
 
     Example:
