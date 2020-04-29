@@ -44,7 +44,8 @@ public class BinaryTreeFromPreorderAndInorder {
         this.inorder = inorder;
 
         map = new HashMap<>();
-
+      
+        // Build HashMap from inorder array, key = element and valu = index 
         for(int i=0; i<inorder.length; i++){
             map.put(inorder[i],i);
         }
@@ -58,10 +59,10 @@ public class BinaryTreeFromPreorderAndInorder {
             return null;
         }
 
-        int root_val = preorder[pre_index];
+        int root_val = preorder[pre_index]; // root is the element pointed by pre_index (=0) in preorder array
         Node root = new Node(root_val);
 
-        int index = map.get(root_val);
+        int index = map.get(root_val); // get root's index in inorder array; which becomes the splitting point for left and right sub-tree
 
         pre_index++;
 
