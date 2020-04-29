@@ -1,8 +1,7 @@
 /*
     Problem: Leetcode.49 Group Anagrams (Medium)
-    
     Given an array of strings, group anagrams together.
-
+    
     Example:
     Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
     Output:
@@ -46,10 +45,13 @@ public class GroupAnagram {
         for(String str:strArray){
             char[] charArray = str.toCharArray();
             Arrays.sort(charArray);
+            
             String key =String.valueOf(charArray);
+            
             if(!map.containsKey(key)){
                 map.put(key,new ArrayList());
             }
+            
             map.get(key).add(str);
         }
         return new ArrayList(map.values());
