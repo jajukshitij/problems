@@ -1,5 +1,6 @@
 /*
-    Problem: Leetcode. Design TicTacToe
+    Problem: Leetcode.348 Design TicTacToe 
+    Design a Tic-tac-toe game that is played between two players on a n x n grid.
 */
 
 public class DesignTicTacToe {
