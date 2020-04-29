@@ -35,7 +35,7 @@
 */
 
 
-public class BstDeleteNode {
+public class BstInsertNode {
 
     public static  class Node {
         int value;
