@@ -101,7 +101,7 @@ public class AlienDictionary {
             if(map.containsKey(curr)){
 
                 for(char c: map.get(curr)){
-                    // reducing the dependency by 1 of all the characters following the key, as key is added to the result
+                    // reducing the indegree of all the characters following the key, as key is added to the result
                     if(indegree[c-'a'] > 0) {
                         indegree[c - 'a']--; 
                     }
