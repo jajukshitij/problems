@@ -30,6 +30,8 @@ public class AlienDictionaryVerify {
 
         char_map =new int[26];
         
+        // Building char_map based on given lexicographical order
+        // For ex. order = "hlabcdefgijkmnopqrstuvwxyz" ;  h=0 , l=1, a=2 ...
         for(int i=0; i< order.length(); i++){
             char_map[order.charAt(i)-'a'] = i;
         }
@@ -47,6 +49,7 @@ public class AlienDictionaryVerify {
 
         int len = Math.min(first.length(), second.length());
         int res =0;
+        
         for(int i=0; i<len ; i++){
             if(first.charAt(i)!= second.charAt(i)){
                 res = char_map[first.charAt(i)-'a'] - char_map[second.charAt(i)-'a'];
@@ -57,7 +60,7 @@ public class AlienDictionaryVerify {
         }
 
         if(res== 0){
-            return first.length()-second.length();
+            return first.length()-second.length(); // for case-> "pqr", "pqrs"
         }else{
             return res;
         }
