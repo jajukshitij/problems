@@ -10,7 +10,8 @@
     
     Reference:
    
-    Logic if same as that behind the actual HashMap:
+    Logic is same as that behind an actual HashMap
+    
     Step 1. Computing hashcode of key,
     Step 2. Calculating array index/bucket from hashcode
     Step 3. With the help of index calculated, directly jump to that index/bucket.
@@ -23,7 +24,6 @@
     https://leetcode.com/problems/design-hashmap/discuss/227081/Java-Solutions
     http://javabypatel.blogspot.com/2015/10/time-complexity-of-hashmap-get-and-put-operation.html
     -------------------------------------------------------------------------------------------------------------------------------
-    
     
     --------- Worst case --------------
     ---------------------------------------------- Time Complexity: O(n) -----------------------------------------------------------
