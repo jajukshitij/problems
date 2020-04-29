@@ -41,6 +41,9 @@ public class AlienDictionary {
         Map<Character, Set<Character>> map = new HashMap<>();
         int[] indegree = new int[26];
 
+        // Creating a HasMap, key = each character in words
+        // value  = Hashset of characters, which follow the key lexicographically
+        
         for(String word : words){
             for(int i=0; i<word.length(); i++){
                 if(!map.containsKey(word.charAt(i))){
@@ -49,6 +52,14 @@ public class AlienDictionary {
             }
         }
 
+        // Polulating values of the Hashmap
+        // For ex.  for words -> "wrt","wrf" we can conclude f follows t
+        // Hence map would store <t, [f]>;
+        
+        // Also populating indegree of the characters
+        // For ex.  for words -> "wrt","wrf" 
+        // indegree of f = 1 and others = 0
+        
         for(int i=1; i<words.length; i++){
             String first = words[i-1];
             String second = words[i];
@@ -64,7 +75,8 @@ public class AlienDictionary {
                         indegree[second.charAt(j)-'a']++;
                     }
 
-                    break;
+                    break; // Need to break as sson as we finr first difference as following comparisons don't make sense.
+                           // For ex. from just these 2 words -> "abz","ack" , we can only conclude c follows b.
                 }
             }
         }
@@ -73,6 +85,7 @@ public class AlienDictionary {
         Queue<Character> queue = new LinkedList<>();
         StringBuilder result = new StringBuilder();
 
+        // Starting BFS with the character having indegree = 0
         for(char key: map.keySet()){
             if(indegree[key-'a']==0){
                 queue.add(key);
@@ -86,8 +99,9 @@ public class AlienDictionary {
             if(map.containsKey(curr)){
 
                 for(char c: map.get(curr)){
+                    // reducing the dependency by 1 of all the characters following the key, as key is added to the result
                     if(indegree[c-'a'] > 0) {
-                        indegree[c - 'a']--;
+                        indegree[c - 'a']--; 
                     }
 
                    if(indegree[c-'a']==0){
@@ -99,11 +113,9 @@ public class AlienDictionary {
 
         if(result.length() == map.size()){
             return result.toString();
-        }else{
+        }else{ // invalid input
             return "";
         }
 
     }
 }
-
-
