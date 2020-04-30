@@ -63,13 +63,14 @@ public class IntersectionOfLinkedLists {
             q= q.next;
         }
 
-        // Getting two pointers to the same starting point in case listA is longer than listB
+        // Getting two pointers to equal length starting point (remaining list length from here is same in both lists ) 
+        // In case listA is longer than listB
         while(lenA>lenB){
             p = p.next;
             lenA--;
         }
 
-        // Getting two pointers to the same starting point in case listB is longer than listA
+        // In case listB is longer than listA
         while(lenB>lenA){
             q = q.next;
             lenB--;
