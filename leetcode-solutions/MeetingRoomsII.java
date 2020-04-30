@@ -24,7 +24,7 @@
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
-public class MeetingRooms {
+public class MeetingRoomsII {
 
     public static int minMeetingRooms(int[][] intervals){
 
