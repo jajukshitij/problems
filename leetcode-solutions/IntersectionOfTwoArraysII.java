@@ -1,5 +1,11 @@
 /*
-    Problem: Leetcode. Intersection of Two Arrays II
+    Problem: Leetcode.350 Intersection of Two Arrays II (Easy)
+    Given two arrays, write a function to compute their intersection.
+
+    Example 1:
+    Input: nums1 = [1,2,2,1], nums2 = [2,2]
+    Output: [2,2]
+    -----------------------------------------------------------------------------------------------------------------------------
 */
 
 import java.util.Arrays;
@@ -8,9 +14,9 @@ import java.util.Map;
 
 public class IntersectionOfTwoArraysII {
     
-    //--------------------------------------------------- Method 1: Two Pointer -----------------------------------------------------
+    //--------------------------------------------------- Method 1: Two Pointer -------------------------------------------------
     //------------------------------------------- Time Complexity: O(n log(n) + m log (m)) --------------------------------------
-    //------------------------------------------------ Space Complexity: O(1) ----------------------------------------------------
+    //------------------------------------------------ Space Complexity: O(1) ---------------------------------------------------
 
     public static int[] intersect(int[] nums1, int[] nums2){
         Arrays.sort(nums1);
