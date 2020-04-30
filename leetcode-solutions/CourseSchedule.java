@@ -29,14 +29,14 @@ public class CourseSchedule {
 
     public static boolean canFinish(int numCourses, int[][] prerequisites){
 
-        int[] indegree = new int[numCourses];
+        int[] indegree = new int[numCourses]; // index = course number , indegree[index] = indegree for that course
         Map<Integer, List<Integer>> map = new HashMap<>(); // Map <Prerequisite, Dependant courses>
 
         for(int[] prereq : prerequisites){
-            int pre = prereq[1];
-            int dep = prereq[0];
+            int pre = prereq[1]; // Prerequisite
+            int dep = prereq[0]; // Dependant
 
-            List<Integer> neighbours = map.getOrDefault(pre,new ArrayList<>());
+            List<Integer> neighbours = map.getOrDefault( pre, new ArrayList<>() );
             indegree[dep]++; // If a graph is drawn it would look like: pre -> dep
                              // indegree value = number of prerequisites need for that course
             neighbours.add(dep);
@@ -49,13 +49,15 @@ public class CourseSchedule {
         
         // Starting BFS with course with no prerequisite
         for(int i=0; i<numCourses; i++){
+            
             if(indegree[i]==0){
                 queue.add(i); 
             }
         }
 
         while(!queue.isEmpty()){
-            int curr = queue.poll();
+            int curr = queue.poll(); // Removing from queue implies we have taken this course 
+                                     // and can reduce the indegree for dependant courses
 
             if(indegree[curr]==0){
                 count++;
@@ -63,9 +65,9 @@ public class CourseSchedule {
 
             if(map.containsKey(curr)) {
                 for (int nei : map.get(curr)) {
-                    indegree[nei]--; // dercrementing the number of prerequesites needed for resp. dependant course
+                    indegree[nei]--; // reducing the prerequesite count for resp. dependant courses
 
-                    if (indegree[nei] == 0) {
+                    if (indegree[nei] == 0) { // Course ready to take
                         queue.add(nei);
                     }
                 }
