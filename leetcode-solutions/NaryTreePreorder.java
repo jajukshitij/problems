@@ -17,7 +17,7 @@
 
 import java.util.*;
 
-public class N_aryTreeTraversal {
+public class NaryTreePreorder {
 
     // ----------------------------------------------- Iterative Approach --------------------------------------------------------
 
