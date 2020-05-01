@@ -15,7 +15,7 @@
     ----------------------------------------------------- Time Complexity: O(n) -------------------------------------------------------
 */
 
-public class SumOfRootToLeafBinaryNumbers {
+public class SumRootToLeafBinaryNumbers {
 
     static int sum = 0;
     
