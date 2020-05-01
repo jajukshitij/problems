@@ -40,11 +40,10 @@ public class DiameterOfBinaryTree {
 
         max_chain = Math.max(max_chain,left_height+right_height);
 
-        return Math.max(left_height,right_height);
+        return Math.max(left_height,right_height)+1;
         
         /* The particular problem c=doesn't consider root itself but in general you need add 1 for such problems.
         max_chain = Math.max(max_chain,left_height+right_height+1);
-        return Math.max(left_height,right_height)+1;
         */
     }
     
