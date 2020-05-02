@@ -41,7 +41,7 @@ public class CourseSchedule {
                              // indegree value = number of prerequisites need for that course
             neighbours.add(dep);
 
-            map.put(pre, neighbours);
+            map.put(pre, neighbours); // Adding all the dependant course to its prerequisite
         }
 
         Queue<Integer> queue = new LinkedList<>();
