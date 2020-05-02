@@ -26,27 +26,21 @@
 import java.util.*;
 
 public class GroupAnagram {
-    public static void main(String args[]) {
-        String[] input = {"eat", "tea", "tan", "ate", "nat", "bat"};
-        List list = groupAnagram(input);
-
-        for(int i=0; i< list.size(); i++) {
-                System.out.println(list.get(i));
-        }
-    }
-
 
     public static List<List<String>> groupAnagram (String[] strArray){
+        
         if(strArray.length==0){
             return new ArrayList();
         }
+        
         Map<String,List> map = new HashMap<>();
 
         for(String str:strArray){
+            
             char[] charArray = str.toCharArray();
             Arrays.sort(charArray);
             
-            String key =String.valueOf(charArray);
+            String key = String.valueOf(charArray);
             
             if(!map.containsKey(key)){
                 map.put(key,new ArrayList());
@@ -55,5 +49,15 @@ public class GroupAnagram {
             map.get(key).add(str);
         }
         return new ArrayList(map.values());
+    }
+    
+    
+    public static void main(String args[]) {
+        String[] input = {"eat", "tea", "tan", "ate", "nat", "bat"};
+        List list = groupAnagram(input);
+
+        for(int i=0; i< list.size(); i++) {
+                System.out.println(list.get(i));
+        }
     }
 }
