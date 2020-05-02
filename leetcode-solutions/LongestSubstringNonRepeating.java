@@ -14,7 +14,8 @@
     
     ------------------------------------------------- Time Complexity: O(n) -------------------------------------------------------
                                                                        Index i will iterate n times
-    ---------------------------------------------- Space Complexity: O(min(m, n)) ------------------------------------------------
+    ---------------------------------------------- Space Complexity: O(min(m, n)) -------------------------------------------------
+                                                                     n = length of string, m = size of character set (alphabets) 
 */
 
 import java.util.HashMap;
@@ -32,7 +33,7 @@ public class LongestSubstringNonRepeating {
 
             while(end < s.length()){
             
-            if( !set.contains(s.charAt(end)) ){ // Adding all unique chars (not in set already)
+            if( !set.contains(s.charAt(end)) ){ // Adding all unique (not in set) chars
             
                 set.add(s.charAt(end));
                 end++;
