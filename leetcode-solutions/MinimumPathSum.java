@@ -32,18 +32,20 @@ public class MinimumPathSum {
         
         int n = grid.length;
         int m = grid[0].length;
-
+        
+        // In first row you can only move right i.e cell in first row can only be reached from their left cell
         for(int i =1; i<n; i++){
-            grid[i][0]= grid[i][0]+ grid[i-1][0];
+            grid[i][0]= grid[i][0] + grid[i-1][0];
         }
-
+        
+        // In first column you can only move down i.e cell in first column can only be reached from their up cell
         for(int j =1; j<m; j++){
             grid[0][j]= grid[0][j]+ grid[0][j-1];
         }
 
         for(int i=1; i<n; i++){
             for(int j=1; j<m; j++){
-                grid[i][j]= Math.min(grid[i-1][j], grid[i][j-1])+grid[i][j];
+                grid[i][j]= Math.min( grid[i-1][j], grid[i][j-1]) + grid[i][j]; // Minimum of left or top + the current cell
             }
         }
 
