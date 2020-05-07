@@ -43,7 +43,7 @@ public class AlienDictionary {
         Map<Character, Set<Character>> map = new HashMap<>();
         int[] indegree = new int[26];
 
-        // Creating a HasMap, key = each character in words
+        // Creating a HashMap, key = each character in words
         // value  = Hashset of characters, which follow the key lexicographically
         
         for(String word : words){
@@ -77,7 +77,7 @@ public class AlienDictionary {
                         indegree[second.charAt(j)-'a']++;
                     }
 
-                    break; // Need to break as sson as we finr first difference as following comparisons don't make sense.
+                    break; // Need to break as soon as we find the first difference, as following comparisons don't make sense.
                            // For ex. from just these 2 words -> "abz","ack" , we can only conclude c follows b.
                 }
             }
@@ -101,7 +101,7 @@ public class AlienDictionary {
             if(map.containsKey(curr)){
 
                 for(char c: map.get(curr)){
-                    // reducing the indegree of all the characters following the key, as key is added to the result
+                    // Decrementing the indegree of all the characters following the key, as key is added to the result
                     if(indegree[c-'a'] > 0) {
                         indegree[c - 'a']--; 
                     }
@@ -115,7 +115,7 @@ public class AlienDictionary {
 
         if(result.length() == map.size()){
             return result.toString();
-        }else{ // invalid input
+        }else{ // Invalid input
             return "";
         }
 
