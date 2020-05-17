@@ -84,7 +84,9 @@ public class RottingOranges {
         }
 
         if(count_fresh==0){
-            return mins-1;
+            return mins-1; // In last while loop, last rotten orange is added to the queue 
+                           // but there are no more fresh oranges to rotten in the next queue
+                           // Hence -1 to not count that loop
         }else{ // All fresh oranges couldn't be reached
             return -1;
         }
