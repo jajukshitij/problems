@@ -1,7 +1,6 @@
 /*
     Problem: Leetcode. 116 Populating Next Right Pointers in Each Node (Medium)
          and Leetcode. 117 Populating Next Right Pointers in Each Node II (Medium)
-    You are given a perfect binary tree where all leaves are on the same level, and every parent has two children.
     
     The binary tree has the following definition:
     struct Node {
