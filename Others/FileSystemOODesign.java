@@ -1,3 +1,22 @@
+/*
+Imagine a file system, it consists of files and folders. Folders can contain other folders as well, unlike files.
+Both files and folders have a size: a file has its own size and a folder has a size that is sum of the sizes of all its contained items.
+
+Goal: retrieve the size of an item whether its's file or folder.
+
+Task 1 - define hierarchy with folders and files
+Task 2 - Instantiate a sample file 
+ex.  
+Folder1 
+    |- File1 (size : 5)
+    | - Folder2
+        | - File2 (size : 2)
+        | - File3 (size : 3)
+        
+Task 3 - Display the size of root folder and one file
+
+*/
+
 import java.util.ArrayList;
 import java.util.List;
 
