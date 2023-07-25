@@ -23,9 +23,7 @@ public class PalindromeLinkedList {
     public static boolean isPalindome(ListNode head){
 
         /*
- 
- List<Integer> list = new ArrayList<>();
-        
+        List<Integer> list = new ArrayList<>();        
         ListNode ptr = head;
         
         while(ptr!=null){
@@ -45,9 +43,7 @@ public class PalindromeLinkedList {
         }
         
         return true;
- 
- 
- */
+        */
         
         ListNode slow = head;
         ListNode fast = head;
