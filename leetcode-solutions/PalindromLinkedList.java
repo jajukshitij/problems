@@ -21,6 +21,33 @@ import java.util.List;
 public class PalindromeLinkedList {
 
     public static boolean isPalindome(ListNode head){
+
+        /*
+ 
+ List<Integer> list = new ArrayList<>();
+        
+        ListNode ptr = head;
+        
+        while(ptr!=null){
+            list.add(ptr.val);
+            ptr=ptr.next;
+        }
+        
+        int start =0;
+        int end = list.size()-1;
+        
+        while(start<end){
+            if(!list.get(start).equals(list.get(end))){
+                return false;
+            }
+            start++;
+            end--;
+        }
+        
+        return true;
+ 
+ 
+ */
         
         ListNode slow = head;
         ListNode fast = head;
