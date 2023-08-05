@@ -45,21 +45,24 @@ public class MedianOfTwoSortedArrays {
             int minRightY = (partitionY==y)? Integer.MAX_VALUE : nums2[partitionY];
 
             if(maxLeftX <= minRightY && maxLeftY <= minRightX){ // Correct partion spot found
-            
+
+                //We have partitioned array at correct place
+                // Now get max of left elements and min of right elements to get the median in case of even length combined array size
+                // or get max of left for odd length combined array size.
                 if((x+y)%2==0){
                     return ((double) Math.max(maxLeftX,maxLeftY) + Math.min(minRightX,minRightY))/2;
                 }else{
                     return ((double) Math.max(maxLeftX,maxLeftY));
                 }
                 
-            } else if(maxLeftX > minRightY){
+            } else if(maxLeftX > minRightY){ //we are too far on right side for partitionX. Go on left side.
                 high = partitionX-1;
-            } else {
+            } else { //we are too far on left side for partitionX. Go on right side.
                 low = partitionX+1;
             }
             
         }
-        return -1; // Invalid Input
+        return -1; // Invalid Input / Array not sorted
     }
     
 }
