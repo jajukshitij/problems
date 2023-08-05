@@ -38,6 +38,8 @@ public class MedianOfTwoSortedArrays {
             int partitionX = (low+high)/2;
             int partitionY = mid - partitionX;
 
+            //if partitionX is 0 it means nothing is there on left side. Use -INF for maxLeftX
+            //if partitionX is length of input then there is nothing on right side. Use +INF for minRightX
             int maxLeftX = (partitionX==0)? Integer.MIN_VALUE : nums1[partitionX-1];
             int minRightX = (partitionX==x)? Integer.MAX_VALUE : nums1[partitionX];
 
