@@ -52,7 +52,7 @@ public class PathSumII {
         current.add(root.value);
         
         if(root.value==sum && root.left==null && root.right==null){
-            result.add(current);
+            result.add(new ArrayList<>(current));
         }
 
         dfs(root.left,sum-root.value,current,result);
