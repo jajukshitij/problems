@@ -44,7 +44,7 @@ public class ReverseLinkedList {
             next = curr.next; // Save next node
             curr.next = prev; // Reverse next pointer
             prev = curr; // Advance prev
-            curr = next; // Advance next
+            curr = next; // Advance curr
         }
 
         return prev;
