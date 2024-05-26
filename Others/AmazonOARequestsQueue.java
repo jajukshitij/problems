@@ -26,19 +26,19 @@ public class AmazonOARequestsQueue{
   public static void main(String[] args) {
 
         int[] wait = {2, 2, 3, 1};
-        int[] result = findRequestsInQueue2(wait);
+        int[] result = findRequestsInQueue(wait);
         System.out.println("result1: " + Arrays.toString(result)); // Output: [4, 2, 1, 0]
 
         int[] wait2 = {1, 3, 2, 2, 5};
-        int[] result2 = findRequestsInQueue2(wait2);
+        int[] result2 = findRequestsInQueue(wait2);
         System.out.println("result2: " + Arrays.toString(result2)); // Output: [5, 4, 1, 0, 0]
 
         int[] wait3 = {4, 3, 2, 1};
-        int[] result3 = findRequestsInQueue2(wait3);
+        int[] result3 = findRequestsInQueue(wait3);
         System.out.println("result3: " + Arrays.toString(result3)); // Output: [4, 2, 0, 0]
     }
 
-  public static int[] findRequestsInQueue2(int[] wait) {
+  public static int[] findRequestsInQueue(int[] wait) {
 
         int[] result = new int[wait.length];
 
