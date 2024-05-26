@@ -21,6 +21,15 @@ findRequestsInQueue has the following parameter: int wait[n]: the maximum waitin
 Constraints 1 ≤ n ≤ 105 1 ≤ wait[i] ≤ 105
 */
 
+// ----------------------------------------------  Time Complexity: O(n^2)---------------------------------------------------------
+// ---------------------------------------------- Adding to PQ O(n log n) ---------------------------------------------------------
+// ---------------------------------------------- Removing from PQ O(log n) -------------------------------------------------------
+// ---------------------------------------------- Removing element from Queue by linear search: O(n) -------------------------------
+// ---------------------------------------------- Total Time complexity main loop: O(nlog n + n^2) ---------------------------------
+
+
+// ----------------------------------------------  Space Complexity: O(n)---------------------------------------------------------
+
 public class AmazonOARequestsQueue{
 
   public static void main(String[] args) {
