@@ -16,5 +16,48 @@ the minimum number of operations required Constraints 2 ≤ n ≤ 105 1 ≤ bloc
 */
 
 public class AmazonOAMinSwaps{
+
+  public static void main(String[] args) {
+        int[] blocks1 = {3, 2, 1};
+        System.out.println(getMinNumMoves(blocks1)); // Output: 3
+
+        int[] blocks2 = {4, 3, 2, 1};
+        System.out.println(getMinNumMoves(blocks2)); // Output: 5
+
+        int[] blocks3 = {1, 5, 4, 3, 2};
+        System.out.println(getMinNumMoves(blocks3)); // Output: 3
+    }
   
+  public static int getMinNumMoves(int[] blocks) {
+        int n = blocks.length;
+        int minIndex =0;
+        int maxIndex = 0;
+
+        for(int i=0; i<n; i++)
+        {
+            if(blocks[i]< blocks[minIndex])
+            {
+                minIndex =i;
+            }
+
+            if(blocks[i] > blocks[maxIndex])
+            {
+                maxIndex = i;
+            }
+        }
+
+        // Moves to bring the smallest block to front;
+        int moves = minIndex;
+
+        if(maxIndex < minIndex)
+        {
+            moves += n-2- maxIndex; // Case when moving smallest block to frontmoves largest block 1 move closer towards end
+        }
+        else
+        {
+            moves += n-1- maxIndex;
+        }
+
+        return moves;
+    }
 }
