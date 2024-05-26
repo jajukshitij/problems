@@ -14,6 +14,8 @@ Function Description Complete the function getMinNumMoves in the editor below.
 getMinNumMoves has the following parameter: int blocks[n]: the distinct weights Returns int : 
 the minimum number of operations required Constraints 2 ≤ n ≤ 105 1 ≤ blocks[i] ≤ 109 for all (1 ≤ i ≤ n) blocks consists of distinct integers. 
 */
+// ----------------------------------------------  Time Complexity: O(n)---------------------------------------------------------
+// ----------------------------------------------  Time Complexity: O(1)---------------------------------------------------------
 
 public class AmazonOAMinSwaps{
 
