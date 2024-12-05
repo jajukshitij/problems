@@ -10,6 +10,12 @@ public class EmployeeFreeTime {
   Output: [[3, 4]]
   Explanation: There are total 3 employees, and all common free time would be [-inf, 1], [3,4], [10, inf].
   We discard intervals as they aren't finite.
+
+  ------------------------ Time Complexity: O(n log n) ; n = each interval ------------------------
+                                             O(n) to interate over all interval to add to priority queue.
+                                             O(log n) for each PQ operation
+    ------------------------ Space Complexity: O(n) ------------------------
+                                               size of PQ.
   */
   public List<Interval> employeeFreeTime(List<List<Interval>> schedule) {
     // Min-heap to sort intervals by their start time
