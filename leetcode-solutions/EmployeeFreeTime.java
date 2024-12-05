@@ -11,4 +11,41 @@ public class EmployeeFreeTime {
   Explanation: There are total 3 employees, and all common free time would be [-inf, 1], [3,4], [10, inf].
   We discard intervals as they aren't finite.
   */
+  public List<Interval> employeeFreeTime(List<List<Interval>> schedule) {
+    // Min-heap to sort intervals by their start time
+        PriorityQueue<Interval> pq = new PriorityQueue<>((a, b) -> a.start - b.start);
+
+        // Add all intervals into the priority queue
+        for (List<Interval> employeeSchedule : schedule) {
+            for (Interval interval : employeeSchedule) {
+                pq.offer(interval);
+            }
+        }
+
+        // Merge intervals and find free time
+        List<Interval> result = new ArrayList<>();
+        Interval prev = pq.poll();
+
+        while (!pq.isEmpty()) {
+            Interval curr = pq.poll();
+
+            if (prev.end < curr.start) {
+                // Found a gap between intervals
+                result.add(new Interval(prev.end, curr.start));
+                prev = curr;
+            } else {
+                // Merge overlapping intervals
+                prev = new Interval(prev.start, Math.max(prev.end, curr.end));
+            }
+        }
+
+        return result;   
+  }
+
+  public class Interval {
+      int start;
+      int end;
+      Interval() { start = 0; end = 0; }
+      Interval(int s, int e) { start = s; end = e; }
+  }
 }
