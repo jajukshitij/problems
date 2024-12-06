@@ -62,4 +62,83 @@ public class ValidOrder {
     }
     return p_set.size() == d_set.size(); // All pickups matched with deliveries
   }
+
+  // ----------------------------------- Follow up 1: Longest Valid Subarray--------------------------------------------
+  
+  public static List<String> findLongestValidSubarray(List<String> orders) {
+        Set<Character> p_set = new HashSet<>();
+        Set<Character> d_set = new HashSet<>();
+        List<String> currentSubarray = new ArrayList<>();
+        List<String> longestSubarray = new ArrayList<>();
+
+        for (String order : orders) {
+            char task_type = order.charAt(0);
+            char task_num = order.charAt(1);
+
+            if (task_type == 'P') {
+                // Add pickup to current subarray
+                if (p_set.contains(task_num)) {
+                    // Duplicate pickup; reset tracking
+                    resetTracking(p_set, d_set, currentSubarray);
+                }
+                p_set.add(task_num);
+                currentSubarray.add(order);
+            } else if (task_type == 'D') {
+                // Check delivery validity
+                if (d_set.contains(task_num) || !p_set.contains(task_num)) {
+                    // Invalid delivery; reset tracking
+                    resetTracking(p_set, d_set, currentSubarray);
+                } else {
+                    d_set.add(task_num);
+                    currentSubarray.add(order);
+                }
+            } else {
+                // Invalid input; reset tracking
+                resetTracking(p_set, d_set, currentSubarray);
+            }
+
+            // Update longest valid subarray
+            if (currentSubarray.size() > longestSubarray.size()) {
+                longestSubarray = new ArrayList<>(currentSubarray);
+            }
+        }
+
+        return longestSubarray;
+    }
+
+  private static void resetTracking(Set<Character> p_set, Set<Character> d_set, List<String> currentSubarray) {
+        p_set.clear();
+        d_set.clear();
+        currentSubarray.clear();
+    }
+
+  //----------------------------------- Follow up 2: Generate Valid Orders--------------------------------------------
+
+  public static List<String> generateValidOrders(int n) {
+        List<String> result = new ArrayList<>();
+        backtrack(result, new ArrayList<>(), n, 0, 0);
+        return result;
+    }
+
+    private static void backtrack(List<String> result, List<String> current, int n, int pickupCount, int deliveryCount) {
+        // Base case: If the sequence is complete, add it to the result
+        if (current.size() == 2 * n) {
+            result.add(String.join(",", current));
+            return;
+        }
+
+        // Add a pickup if we haven't reached the max number of pickups
+        if (pickupCount < n) {
+            current.add("P" + (pickupCount + 1));
+            backtrack(result, current, n, pickupCount + 1, deliveryCount);
+            current.remove(current.size() - 1);
+        }
+
+        // Add a delivery if we have unmatched pickups
+        if (deliveryCount < pickupCount) {
+            current.add("D" + (deliveryCount + 1));
+            backtrack(result, current, n, pickupCount, deliveryCount + 1);
+            current.remove(current.size() - 1);
+        }
+    }
 }
