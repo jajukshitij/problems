@@ -25,11 +25,10 @@ public class ValidOrder {
                                               size of 2 HashSets
     
   Follow up 1: Find longest valid subarray
-  Follow up 2: Given an integer representing number of orders, print all possible valid order paths
   Ex 1: orders = ['P1', 'P1', 'D1'], return ['P1', 'D1']
   Ex 2: orders = ['P1', 'P1', 'D1', 'D1'], return ['P1', 'D1']
 
-  
+  Follow up 2: Given an integer representing number of orders, print all possible valid order paths  
   */
 
   public boolean isValid(List<String> orders) {
