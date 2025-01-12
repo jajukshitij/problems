@@ -3,6 +3,14 @@
     Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.
     
     Example:
+    Input:
+    ["MovingAverage","next","next","next","next"]
+    [[3],[1],[10],[3],[5]]
+    
+    Output:
+    [null, 1.0, 5.5, 4.66667, 6.0]
+
+    Explanation:
     MovingAverage m = new MovingAverage(3);
     m.next(1) = 1 // return 1.00000
     m.next(10) = (1 + 10) / 2 // return 5.50000
