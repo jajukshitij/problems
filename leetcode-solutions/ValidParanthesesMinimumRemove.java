@@ -27,7 +27,42 @@
 
 
 public class ValidParanthesesMinimumRemove {
+
     public String minRemoveToMakeValid(String s) {
+        Stack<Integer> stack = new Stack<>();
+
+        for(int i=0; i< s.length(); i++)
+        {
+            char curr = s.charAt(i);
+
+            if(curr=='(')
+            {
+                stack.push(i);
+            }
+            if(curr ==')')
+            {
+                if(!stack.isEmpty() && s.charAt(stack.peek()) =='(')
+                {
+                    stack.pop();
+                }
+                else
+                {
+                    stack.push(i);
+                }
+            }
+        }
+
+        StringBuilder sb = new StringBuilder(s);
+
+        while(!stack.isEmpty())
+        {
+            sb.deleteCharAt(stack.pop());
+        }
+
+        return sb.toString();
+    }
+    
+    public String minRemoveToMakeValid2(String s) {
         Stack<Integer> stack = new Stack<>();
         
         for(int i =0; i<s.length(); i++)
