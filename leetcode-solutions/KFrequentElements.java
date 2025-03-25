@@ -12,30 +12,40 @@
     -------------------------------------------------------------------------------------------------------------------------
     
     ------------------------------------------------- Time Complexity: O(N log(k)) -------------------------------------------
-    ---------------------------------------------------- Space Complexity: O(k) ----------------------------------------------
+    ---------------------------------------------------- Space Complexity: O(n+k) ----------------------------------------------
 */
 
 public class KFrequentElements {
     public int[] topKFrequent(int[] nums, int k) {
-      Map<Integer,Integer> map = new HashMap<>();
+        if (k == nums.length) {
+            return nums;
+        }
+
+        Map<Integer,Integer> map = new HashMap<>();
 
         for(int num: nums)
         {
             map.put(num, map.getOrDefault(num,0)+1);
         }
 
-        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b)->map.get(b)-map.get(a));
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b)->map.get(a)-map.get(b));
 
-        pq.addAll(map.keySet());
-
-        int[] result = new int[k];
-        int index=0;
-
-        while(k>0 && !pq.isEmpty())
+        for(int n: map.keySet())
         {
-            result[index]=pq.remove();
-            index++;
-            k--;
+            pq.add(n);
+
+            if(pq.size()>k)
+            {
+                pq.poll();
+            }
+        }
+        int[] result = new int[k];
+        int index=k-1;
+
+        while(index>=0 && !pq.isEmpty())
+        {
+            result[index]=pq.poll();
+            index--;
         }
 
         return result;
