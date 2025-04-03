@@ -67,11 +67,101 @@ public class ReorganizeString
       return sb.toString();
     }
 
-    // -------------------------------------------------- Solution 1: Char Array Count/ Sort -----------------------------------------------
-    // --------------------------------------------------- Time Complexity: O(n) -------------------------------------------------------
-    // -------------------------------------------------- Space Complexity: O(k) -------------------------------------------------------------
+    // -------------------------------------------------- Solution 1: Char Array Count/ Sort -------------------------------------------------
+    // --------------------------------------------------- Time Complexity: O(n) -------------------------------------------------------------
+    // --------------------------------------------------- n = total chars in the string; k = total unique characters ------------------------
+    // -------------------------------------------------- Space Complexity: O(k)  but 'len' will always be less than 26 so can say: O(1) ------
     public String reorganizeString(String s)
     {
-      
+      /*
+      1. create a freq count arr of each char
+      2. get maxCount and index of most freq charac
+      3. check maxCount > len+1/2
+      4. create ans char array
+      4. put the maxchar in even indexes
+      5. put the rest of the chars in rand position
+      */
+
+        int[] freqArr = new int[26];
+        int len = s.length();
+
+        for(char c: s.toCharArray())
+            {
+                freqArr[c-'a']++;
+            }
+
+        int maxCount =0, maxIdx =0;
+
+        for(int i=0; i<freqArr.length; i++)
+            {
+                if(freqArr[i] > maxCount)
+                {
+                    maxCount = freqArr[i];
+                    maxIdx = i;
+                }
+            }
+
+        if(maxCount > (len+1)/2)
+        {
+            return "";
+        }
+
+        char[] res = new char[len];
+        int index =0;
+
+        while(freqArr[maxIdx] > 0)
+            {
+                res[index] = (char) (maxIdx +'a');
+                index +=2;
+                freqArr[maxIdx]--;
+            }
+
+        for(int i=0; i< freqArr.length; i++)
+            {
+                while(freqArr[i] > 0)
+                    {
+                        if(index >= len)
+                        {
+                            index = 1;
+                        }
+                        res[index] = (char) (i +'a');
+                        index +=2;
+                        freqArr[i]--;
+                    }
+            }
+
+        return String.valueOf(res);
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
