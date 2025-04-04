@@ -37,11 +37,11 @@ public class CourseSchedule {
             int dep = prereq[0]; // Dependant
 
             List<Integer> neighbours = map.getOrDefault( pre, new ArrayList<>() );
-            indegree[dep]++; // If a graph is drawn it would look like: pre -> dep
-                             // indegree value = number of prerequisites need for that course
             neighbours.add(dep);
-
             map.put(pre, neighbours); // Adding all the dependant course to its prerequisite
+            
+            indegree[dep]++; // If a graph is drawn it would look like: pre -> dep
+                             // indegree value = number of prerequisites need for that course            
         }
 
         Queue<Integer> queue = new LinkedList<>();
