@@ -20,35 +20,37 @@ public class KFrequentElements {
         if (k == nums.length) {
             return nums;
         }
-
-        Map<Integer,Integer> map = new HashMap<>();
-
+        
+        Map<Integer, Integer> map = new HashMap<>();
+        
         for(int num: nums)
         {
             map.put(num, map.getOrDefault(num,0)+1);
         }
 
-        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b)->map.get(a)-map.get(b));
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>((a,b)-> map.get(a)- map.get(b));
 
-        for(int n: map.keySet())
+        for(int num: map.keySet())
         {
-            pq.add(n);
+            minHeap.add(num);
 
-            if(pq.size()>k)
+            if(minHeap.size() > k)
             {
-                pq.poll();
+                minHeap.poll();
             }
         }
-        int[] result = new int[k];
-        int index=k-1;
 
-        while(index>=0 && !pq.isEmpty())
+        int[] res = new int[k];
+
+        for(int i=k-1; i>=0; i--)
         {
-            result[index]=pq.poll();
-            index--;
+            if(!minHeap.isEmpty())
+            {
+                res[i] = minHeap.poll();
+            }
         }
 
-        return result;
+        return res;
     }
 }
 
