@@ -27,6 +27,7 @@ import java.util.PriorityQueue;
 
 public class MergeKSortedList {
 
+    //-------------------------------------------------- Method 1: Using PQ (Better Time Complexity) ----------------------------------
     public ListNode mergeKLists(ListNode[] lists) {
 
         if(lists.length==1){
@@ -70,7 +71,7 @@ public class MergeKSortedList {
         }
     }
 
-   //------------------------------------------------- Merge 1 List at a Time -------------------------------------------------------- 
+   //------------------------------------------------- Method 2: Merge 1 List at a Time -------------------------------------------------------- 
    /*------------------------------------------------- Time Complexity: O(kN) --------------------------------------------------------
                                                                        k = no. of Linked Lists ; N= total number of Nodes
                                                                        O(log k) for every add/ remove in PQ
