@@ -69,6 +69,63 @@ public class MergeKSortedList {
             this.next = null;
         }
     }
+
+   //------------------------------------------------- Merge 1 List at a Time -------------------------------------------------------- 
+   /*------------------------------------------------- Time Complexity: O(kN) --------------------------------------------------------
+                                                                       k = no. of Linked Lists ; N= total number of Nodes
+                                                                       O(log k) for every add/ remove in PQ
+
+    ---------------------------------------------------- Space Complexity: O(N)------------------------------------------------------*/
+
+    public ListNode mergeKLists(ListNode[] lists) {
+        if(lists.length==1)
+        {
+            return lists[0];
+        }
+
+        if(lists.length==0)
+        {
+            return null;
+        }
+        for(int i =1; i<lists.length; i++)
+        {
+            lists[0] = merge2List(lists[0], lists[i]);
+        }
+
+        return lists[0];
+    }
+
+    public ListNode merge2List(ListNode l1, ListNode l2)
+    {
+        ListNode sorted = new ListNode(0);
+        ListNode ptr = sorted;
+
+        while(l1 != null && l2 != null)
+        {
+            if(l1.val < l2.val)
+            {
+                sorted.next = l1;
+                l1 = l1.next;
+            }
+            else
+            {
+                sorted.next = l2;
+                l2 = l2.next;
+            }
+            sorted = sorted.next;
+        }
+
+        if(l1 != null)
+        {
+            sorted.next = l1;
+        }
+        if(l2 != null)
+        {
+            sorted.next = l2;
+        }
+
+        return ptr.next;
+    }
 }
 
 
