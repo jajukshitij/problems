@@ -37,21 +37,21 @@ public class RottingOranges {
         int col = grid[0].length;
 
         Queue<int[]> queue = new LinkedList<>();
-        int count_fresh = 0;
+        int fresh = 0;
 
         for(int i=0; i<row; i++){
             for(int j=0; j<col; j++){
             
                 if(grid[i][j]==2){
-                    queue.add(new int[]{i,j}); // Adding rotten orange cells to queue
+                    queue.offer(new int[]{i,j}); // Adding rotten orange cells to queue
                     
                 }else if(grid[i][j]==1){
-                    count_fresh++; // Count fresh oranges
+                    fresh++; // Count fresh oranges
                 }
             }
         }
 
-        if(count_fresh==0){ // No fresh oranges to rotten
+        if(fresh==0){ // No fresh oranges to rotten
             return 0;
         }
 
@@ -62,28 +62,29 @@ public class RottingOranges {
         
             int size = queue.size();
 
-            for(int i=0; i<size; i++){
+            while(size-- >0){
             
-                int[] point = queue.poll(); // Picking rotten orange cell out of queue, to turn fresh oranges around it rotten
+                int[] rot = queue.poll(); // Picking rotten orange cell out of queue, to turn fresh oranges around it rotten
+                int x = rot[0];
+                int y = rot[1];
 
                 for(int[] dir : dirs){ // Traversing 4 direction around the rotten orange cell
                 
-                    int x = point[0] + dir[0];
-                    int y = point[1] + dir[1];
+                    int i = x + dir[0];
+                    int j = y+ dir[1];
 
-                    if(x<0 || y<0 || x>=row || y>=col || grid[x][y] != 1){ // If out of bound or not a fresh orange, continue
-                        continue;
+                    if(i >=0 && i<row && j>=0 && j<col && grid[i][j]==1)
+                    {                   
+                        grid[i][j] = 2; // Turn fresh ornage rotten
+                        queue.offer(new int[]{i,j}); // Add this rotten orange to queue to process later
+                        fresh--; // Decrement count to keep track of fresh oranges left
                     }
-                    
-                    grid[x][y] = 2; // Turn fresh ornage rotten
-                    queue.add(new int[]{x,y}); // Add this rotten orange to queue to process later
-                    count_fresh--; // Decrement count to keep track of fresh oranges left
                 }
             }
             mins++;
         }
 
-        if(count_fresh==0){
+        if(fresh==0){
             return mins-1; // In last while loop, last rotten orange is added to the queue 
                            // but there are no more fresh oranges to rotten in the next queue
                            // Hence -1 to not count that loop
