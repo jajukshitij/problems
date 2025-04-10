@@ -1,5 +1,5 @@
 /*
-    Problem: Leetcode.198 House Robber (Easy)
+    Problem: Leetcode.198 House Robber (Medium)
     You are a professional robber planning to rob houses along a street.
     Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected 
     and it will automatically contact the police if two adjacent houses were broken into on the same night.
@@ -19,6 +19,7 @@
     
     ------------------------------------------------------- Time Complexity: O(n) --------------------------------------------------
                                                                              n = length of array
+    ------------------------------------------------------- Space Complexity: O(n) --------------------------------------------------
 */
 
 public class HouseRobber {
@@ -28,18 +29,49 @@ public class HouseRobber {
         if(nums==null || nums.length==0){
             return 0;
         }
-        if(nums.length==1){
+        
+        int n = nums.length;
+        if(n == 1){
             return nums[0];
         }
 
-        if(nums.length==2){
+        if(n == 2){
             return Math.max(nums[0], nums[1]);
         }
 
-        for(int i=2; i<nums.length; i++){
+        for(int i=2; i<n; i++){
             nums[i] = Math.max(nums[i]+ nums[i-2], nums[i-1]);
         }
 
-        return nums[nums.length-1];
+        return nums[n-1];
+    }
+
+    // ------------------------------------------------------- Time Complexity: O(n) --------------------------------------------------
+    // ------------------------------------------------------- Space Complexity: O(1) -------------------------------------------------
+
+    public static int houseRobber(int[] nums){
+
+        if(nums==null || nums.length==0){
+            return 0;
+        }
+        if(n == 1){
+            return nums[0];
+        }
+
+        if(n == 2){
+            return Math.max(nums[0], nums[1]);
+        }
+
+        int prevRob = 0;
+        int maxRob =0;
+
+        for(int num: nums)
+            {
+                int temp = Math.max(maxRob, prevRob + num);
+                prevRob = maxRob;
+                maxRob = temp;
+            }
+
+        return maxRob;
     }
 }
