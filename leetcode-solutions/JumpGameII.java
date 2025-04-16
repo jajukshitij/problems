@@ -29,7 +29,7 @@
      But we don't know which 1 to choose to get minimum number of jumps in the end.
      
   2. So create a range of all possible jumps and check for the farthest index possible in every range  
-      We'll use 2 variables 2 define the raneg - near and far
+      We'll use 2 variables to define the range - near and far
       = from index 0 we can jump to index 1 or 2; so for 2nd iteration-> near =1, far = 2;
     
   3. Farthest index in the current range = current index + maximum jump
