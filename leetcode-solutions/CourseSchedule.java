@@ -46,40 +46,43 @@ public class CourseSchedule {
         for(int[] prereq : prerequisites){
             int pre = prereq[1]; // Prerequisite
             int dep = prereq[0]; // Dependant
-
-            List<Integer> neighbours = map.getOrDefault( pre, new ArrayList<>() );
-            neighbours.add(dep);
-            map.put(pre, neighbours); // Adding all the dependant course to its prerequisite
             
             indegree[dep]++; // If a graph is drawn it would look like: pre -> dep
-                             // indegree value = number of prerequisites need for that course            
+                             // indegree value = number of prerequisites need for that course    
+            
+            if(!map.containsKey(pre))
+            {
+                map.put(pre, new ArrayList<Integer>());
+            }
+
+            map.get(pre).add(dep); // Adding all the dependant course to its prerequisite          
         }
 
-        Queue<Integer> queue = new LinkedList<>();
-        int count =0;
+        Queue<Integer> queue = new LinkedList<>();        
         
         // Starting BFS with course with no prerequisite
         for(int i=0; i<numCourses; i++){
             
             if(indegree[i]==0){
-                queue.add(i); 
+                queue.offer(i); 
             }
         }
 
+        int count =0;
+
         while(!queue.isEmpty()){
+            count++;
             int curr = queue.poll(); // Removing from queue implies we have taken this course 
                                      // and can reduce the indegree for dependant courses
 
-            if(indegree[curr]==0){
-                count++;
-            }
+            List<Integer> deps = map.get(curr);
 
-            if(map.containsKey(curr)) {
-                for (int nei : map.get(curr)) {
-                    indegree[nei]--; // reducing the prerequesite count for resp. dependant courses
+            if(deps != null) {
+                for (int dep : deps) {
+                    indegree[dep]--; // reducing the prerequesite count for resp. dependant courses
 
-                    if (indegree[nei] == 0) { // Course ready to take
-                        queue.add(nei);
+                    if (indegree[dep] == 0) { // Course ready to take
+                        queue.offer(dep);
                     }
                 }
 
