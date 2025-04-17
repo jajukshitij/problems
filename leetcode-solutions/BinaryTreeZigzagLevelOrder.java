@@ -28,34 +28,6 @@ import java.util.Queue;
 
 public class BinaryTreeZigzagLevelOrder {
 
-    public static  class Node {
-        int value;
-        Node left, right;
-
-        public Node(int item)
-        {
-            value = item;
-            left = right = null;
-        }
-    }
-
-    static Node prev;
-    static  Node root;
-
-    public static void main(String args[]) {
-
-        BinaryTreeLevelOrder tree = new BinaryTreeLevelOrder();
-        tree.root = new Node(1);
-        tree.root.left = new Node(2);
-        tree.root.right = new Node(2);
-        tree.root.left.left = new Node(3);
-        tree.root.left.right = new Node(4);
-        tree.root.right.left = new Node(4);
-        tree.root.right.right = new Node(3);
-
-        System.out.println(levelOrder(root));
-    }
-
     public List<List<Integer>> zigzagLevelOrder(Node root) {
 
         List<List<Integer>> resultList = new ArrayList<>();
@@ -94,5 +66,30 @@ public class BinaryTreeZigzagLevelOrder {
         }
 
         return resultList;
+    }
+
+    public static  class Node {
+        int value;
+        Node left, right;
+
+        public Node(int item)
+        {
+            value = item;
+            left = right = null;
+        }
+    }
+
+    public static void main(String args[]) {
+
+        BinaryTreeLevelOrder tree = new BinaryTreeLevelOrder();
+        tree.root = new Node(1);
+        tree.root.left = new Node(2);
+        tree.root.right = new Node(2);
+        tree.root.left.left = new Node(3);
+        tree.root.left.right = new Node(4);
+        tree.root.right.left = new Node(4);
+        tree.root.right.right = new Node(3);
+
+        System.out.println(levelOrder(root));
     }
 }
