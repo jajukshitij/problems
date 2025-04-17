@@ -23,7 +23,7 @@ import java.util.*;
 
 public class LowestCommonAncestor {
 
-    // ------------------------------------------------------ Method 2: Iterative---------------------------------------------------------
+    // ------------------------------------------------------ Method 1: Iterative---------------------------------------------------------
     public static Node lcaBinaryTree (Node root, Node p, Node q){
     
         if(root ==null){
