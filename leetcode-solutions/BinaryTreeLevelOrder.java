@@ -46,20 +46,6 @@ import java.util.Queue;
 
 public class BinaryTreeLevelOrder {
 
-    public static  class Node {
-        int value;
-        Node left, right;
-
-        public Node(int item)
-        {
-            value = item;
-            left = right = null;
-        }
-    }
-
-    static Node prev;
-    static  Node root;
-
     public static List<List<Integer>> levelOrder(Node root){
 
         List<List<Integer>> resultList = new ArrayList<>();
@@ -92,6 +78,17 @@ public class BinaryTreeLevelOrder {
         }
 
         return resultList;
+    }
+    
+    public static  class Node {
+        int value;
+        Node left, right;
+
+        public Node(int item)
+        {
+            value = item;
+            left = right = null;
+        }
     }
     
      public static void main(String args[]) {
