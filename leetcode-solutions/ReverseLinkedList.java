@@ -18,23 +18,6 @@
 
 public class ReverseLinkedList {
 
-    public static void main(String args[]) {
-        ListNode list1 = new ListNode();
-
-        list1 = new ListNode(7);
-        list1.next = new ListNode(8);
-        list1.next.next = new ListNode(9);
-        list1.next.next.next = new ListNode(10);
-        list1.next.next.next.next = new ListNode(15);
-        System.out.println("Original List is ");
-        print(list1);
-
-
-        ListNode rs = reverseList(list1);
-        System.out.println("Reversed List is ");
-        print(rs);
-    }
-
     public static ListNode reverseList(ListNode head){
         ListNode prev = null;
         ListNode curr = head;
@@ -63,7 +46,24 @@ public class ReverseLinkedList {
             this.value = -1;
             this.next = null;
         }
-    } 
+    }
+
+    public static void main(String args[]) {
+        ListNode list1 = new ListNode();
+
+        list1 = new ListNode(7);
+        list1.next = new ListNode(8);
+        list1.next.next = new ListNode(9);
+        list1.next.next.next = new ListNode(10);
+        list1.next.next.next.next = new ListNode(15);
+        System.out.println("Original List is ");
+        print(list1);
+
+
+        ListNode rs = reverseList(list1);
+        System.out.println("Reversed List is ");
+        print(rs);
+    }
 
     static void print(ListNode start) {
         ListNode ptr = start;
