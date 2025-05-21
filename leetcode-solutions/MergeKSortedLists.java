@@ -36,7 +36,7 @@ public class MergeKSortedList {
 
         for (ListNode node : lists) {
             if (node != null) {
-                queue.add(node);
+                queue.add(node); // Only adding first Node of each List 
             }
         }
 
@@ -50,6 +50,20 @@ public class MergeKSortedList {
         }
 
         return head.next;
+        /*
+        Ex:
+        [
+        1->4->5,
+        1->3->4,
+        2->6
+        ]
+        
+        After first FOR loop, queue will contain 1,1,2.        
+        Now in the while loop, 1 (1st list) will be removed from queue and we test 1.next!=null and add 4 to the queue. 
+        so after 1st iteration queue will be 1,2,4.        
+        In the 2nd iteration, 1 ( 2nd list) will be removed from queue and test 1.next!=null (1.next is 3), add 3 to the queue.
+        So queue will be 2,3,4 after this iteration and this continues, so the size of queue will always be <=K.
+        */
     }
 
     //-------------------------------------------------- Method 2: Using PQ (Better Time Complexity) ----------------------------------
