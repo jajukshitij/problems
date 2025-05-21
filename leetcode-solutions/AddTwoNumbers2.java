@@ -18,7 +18,7 @@
                                                size of new result list.
 */
 
-public class AddtwoNumbers2
+public class AddTwoNumbers2
   {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode r1 = reverse(l1);
