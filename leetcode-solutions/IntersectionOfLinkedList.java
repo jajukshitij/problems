@@ -60,14 +60,12 @@ public class IntersectionOfLinkedLists {
 
         ListNode q = headB;
 
-        while(q!= null){
-            if(set.contains(q)){
-                return q;
-            }
+        while(q != null && !set.contains(q))
+        {
             q = q.next;
         }
 
-        return null;
+        return q;
     }
 
     //------------------------------------------------- Method 1: Using Two Pointer ------------------------------------------------------
