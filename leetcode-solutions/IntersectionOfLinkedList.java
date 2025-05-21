@@ -95,23 +95,23 @@ public class IntersectionOfLinkedLists {
         // Getting two pointers to equal length starting point (remaining list length from here is same in both lists ) 
         // In case listA is longer than listB
         while(lenA>lenB){
-            p = p.next;
+            headA = headA.next;
             lenA--;
         }
 
         // In case listB is longer than listA
         while(lenB>lenA){
-            q = q.next;
+            headB = headB.next;
             lenB--;
         }
 
         // Incrementing both the pointers simultaneously while checking if they are pointing to the same node
-        while(p!=q){
-            p = p.next;
-            q = q.next;
+        while(headA!=headB){
+            headA = headA.next;
+            headB = headB.next;
         }
 
-        return p;
+        return headA;
     }
     
     public static  class ListNode {
