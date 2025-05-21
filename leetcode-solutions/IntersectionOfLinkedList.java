@@ -37,38 +37,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class IntersectionOfLinkedLists {
-    
-    //------------------------------------------------- Method 1: Using HashSet ------------------------------------------------------
-    //------------------------------------------------- Time Complexity: O(n+m) ------------------------------------------------------
-    // ---------------------------------------------- Space Complexity: O(n) or O(m) --------------------------------------------------
 
-    // Adding all one list to hashset and traversing through the other to check if the same nodes exists in hashset
-    
-    public static ListNode itersectionHashSet(ListNode headA, ListNode headB){
-        if(headA== null || headB== null){
-            return null;
-        }
-
-        Set<ListNode> set = new HashSet<>();
-
-        ListNode p = headA;
-
-        while(p!= null){
-            set.add(p);
-            p= p.next;
-        }
-
-        ListNode q = headB;
-
-        while(q != null && !set.contains(q))
-        {
-            q = q.next;
-        }
-
-        return q;
-    }
-
-    //------------------------------------------------- Method 1: Using Two Pointer ------------------------------------------------------
+    //------------------------------------------------- Method 2: Using Two Pointer (Better Space Complexity)------------------------------------------------------
     //------------------------------------------------- Time Complexity: O(n+m) ------------------------------------------------------
     // ------------------------------------------------- Space Complexity: O(1) ------------------------------------------------------
 
@@ -112,6 +82,36 @@ public class IntersectionOfLinkedLists {
         }
 
         return headA;
+    }
+    
+    //------------------------------------------------- Method 1: Using HashSet ------------------------------------------------------
+    //------------------------------------------------- Time Complexity: O(n+m) ------------------------------------------------------
+    // ---------------------------------------------- Space Complexity: O(n) or O(m) --------------------------------------------------
+
+    // Adding all one list to hashset and traversing through the other to check if the same nodes exists in hashset
+    
+    public static ListNode itersectionHashSet(ListNode headA, ListNode headB){
+        if(headA== null || headB== null){
+            return null;
+        }
+
+        Set<ListNode> set = new HashSet<>();
+
+        ListNode p = headA;
+
+        while(p!= null){
+            set.add(p);
+            p= p.next;
+        }
+
+        ListNode q = headB;
+
+        while(q != null && !set.contains(q))
+        {
+            q = q.next;
+        }
+
+        return q;
     }
     
     public static  class ListNode {
