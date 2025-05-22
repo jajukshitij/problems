@@ -26,6 +26,7 @@ public class KClosestPointToOrigin {
     public static int[][] kClosestPoints(int[][] points, int k){
 
         // Creating a max heap with comparator on Euclidean distance
+        // Max Heap = decreasing order of distance -> farthest to closest
         PriorityQueue<int[]> priorityQueue = new PriorityQueue<>(new Comparator<int[]>(){
             @Override
             public int compare(int[] a, int[] b){
