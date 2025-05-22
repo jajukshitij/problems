@@ -26,7 +26,8 @@ All values of nums are unique.
 nums is an ascending array that is possibly rotated.
 -104 <= target <= 104
 */
-
+// -------------------------------------------------------- Time Complexity: O(log(n)) --------------------------------------------------
+// ---------------------------------------------------------- Space Complexity: O(1) ----------------------------------------------------
 public class SearchRotatedSortedArray{
 
   public int search(int[] nums, int target) {
