@@ -28,7 +28,7 @@ public class MinInRotatedSortedArrayII {
             } else if(nums[mid]< nums[high]){
                 high = mid;
             }else{
-                high--;
+                high--; // Dealing with Duplicates
             }
         }
         return nums[low];
