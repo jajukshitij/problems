@@ -114,13 +114,13 @@ public class CourseSchedule {
     So one correct course order is [0,1,2,3]. Another correct ordering is [0,2,1,3].
     */
     public int[] findOrder(int numCourses, int[][] prerequisites) {
-        int[] indegree = new int[numCourses];
-        Map<Integer, List<Integer>> map = new HashMap<>();
+        int[] indegree = new int[numCourses]; // index = course number , indegree[index] = indegree for that course
+        Map<Integer, List<Integer>> map = new HashMap<>(); // Map <Prerequisite, Dependant courses>
 
         for(int[] prereq: prerequisites)
         {
-            int pre = prereq[1];
-            int dep = prereq[0];
+            int pre = prereq[1]; // Prerequisite
+            int dep = prereq[0]; // Dependant
 
             indegree[dep]++;
             
