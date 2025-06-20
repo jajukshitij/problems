@@ -66,7 +66,7 @@ public class MergeKSortedList {
         */
     }
 
-    //-------------------------------------------------- Method 2: Using PQ (Better Time Complexity) ----------------------------------
+    //-------------------------------------------------- Method 2: Using PQ  O(N log (N))----------------------------------
     public ListNode mergeKLists(ListNode[] lists) {
 
         if(lists.length==1){
