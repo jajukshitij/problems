@@ -45,11 +45,11 @@ public class BinaryTreeNextRightPointer {
                 }
                 
                 if (node.left != null) {
-                    Q.add(node.left);
+                    queue.add(node.left);
                 }
                 
                 if (node.right != null) {
-                    Q.add(node.right);
+                    queue.add(node.right);
                 }
             }
         }
