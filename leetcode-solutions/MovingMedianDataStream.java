@@ -33,8 +33,8 @@ import java.util.PriorityQueue;
 
 public class MovingMedianDataStream {
 
-    PriorityQueue<Integer> minHeap = null; // upper half
-    PriorityQueue<Integer> maxHeap =  null; // lower half
+    PriorityQueue<Integer> minHeap = null; // upper half , ascending
+    PriorityQueue<Integer> maxHeap =  null; // lower half , descending
 
     public MovingMedianDataStream(){
         minHeap = new PriorityQueue<>();
