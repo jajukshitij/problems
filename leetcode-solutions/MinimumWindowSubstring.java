@@ -54,7 +54,7 @@ public class MinimumWindowSubstring {
             
                 map.put(c, map.get(c)-1); // Decrementig count for each character found in s
                 
-                if(map.get(c)>=0){ // if >=0 , then that char doesn't exists in t
+                if(map.get(c)>=0){ // if less than or equal to 0 , then that char doesn't exists in t
                     count--; 
                 }
             }
