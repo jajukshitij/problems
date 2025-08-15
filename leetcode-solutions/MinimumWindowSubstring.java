@@ -54,12 +54,13 @@ public class MinimumWindowSubstring {
             
                 map.put(c, map.get(c)-1); // Decrementig count for each character found in s
                 
-                if(map.get(c)>=0){
-                    count--; // when count = 0 ; all characters of t have been found in range i to j
+                if(map.get(c)>=0){ // if >=0 , then that char doesn't exists in t
+                    count--; 
                 }
             }
 
-            while(count==0 && i<=j){ // incrementing i to reduce the window size, i to j
+            // incrementing i to reduce the window size, i to j
+            while(count==0 && i<=j){ // when count = 0 ; all characters of t have been found in range i to j
 
                 found = true;
 
