@@ -34,7 +34,7 @@
 public class ContinuousSubarraySum {
     public boolean checkSubarraySum(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
-        map.put(0,-1);
+        map.put(0,-1); // ensures if a prefix sum itself (from start) is divisible by k, we can detect it.
         int runningSum =0;
 
         for(int i=0; i<nums.length; i++)
