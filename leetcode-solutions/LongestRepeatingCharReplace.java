@@ -16,6 +16,7 @@
     Explanation: Replace the one 'A' in the middle with 'B' and form "AABBBBA".
     The substring "BBBB" has the longest repeating letters, which is 4.
     -------------------------------------------------------------------------------------------------------------------------------
+    Reference: https://www.youtube.com/watch?v=gqXU1UyA8pk&t=964s
     
     ------------------------------------------------- Time Complexity: O(n) -------------------------------------------------------
     ---------------------------------------------- Space Complexity: O(m) -------------------------------------------------
