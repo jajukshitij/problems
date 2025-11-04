@@ -46,6 +46,12 @@
                     but Popping from the SortedList is O(log n) 
    
     ----------------------------------------------------- Space Complexity: O(n) -----------------------------------------------------
+
+    1. Doubly Linked List creates stack data structure.
+    2. Stack push(x), adds to the end of the list.
+    3. TreeMap<Value, List of Nodes with that value>; 
+       mapping value to its nodes;
+       for sorted ordering and O(log n) look up for Max element    
 */
 
 public class Node {
@@ -98,7 +104,7 @@ class DoubleLinkedList {
     }
 }
 
-//  Uses a doubly linked list for stack operations 
+// Uses a doubly linked list for stack operations 
 // and a TreeMap for tracking maximum values
 class MaxStack {
     private DoubleLinkedList stack;                    // Doubly linked list acting as stack
@@ -132,7 +138,7 @@ class MaxStack {
 
     public int peekMax() {
         // TreeMap's lastKey() gives us the maximum value in O(log n)
-        return valueToNodes.lastKey();
+        return valueToNodes.lastKey(); // .firstKey() for Min; .firstEntry() for key-value pair
     }
 
     public int popMax() {
