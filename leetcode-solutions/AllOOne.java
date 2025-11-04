@@ -33,7 +33,7 @@
     ------------------------------------------------------ Time Complexity: O(1) -----------------------------------------------------
     ----------------------------------------------------- Space Complexity: O(n) -----------------------------------------------------
 
-    1. Double LinkedList Structure; 
+    1. Doubly LinkedList Structure; 
     2. Each node is for a particular frequency;
     3. The LinkedList is soreted from lowest to highest frequency Nodes.
     4. Each node store all the string of that frequency.
