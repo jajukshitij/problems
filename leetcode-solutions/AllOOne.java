@@ -4,15 +4,14 @@
     
     Implement the AllOne class:
     
-    AllOne() Initializes the object of the data structure.
-    inc(String key) Increments the count of the string key by 1. If key does not exist in the data structure, insert it with count 1.
-    dec(String key) Decrements the count of the string key by 1. If the count of key is 0 after the decrement, remove it from the data structure.
+    1. AllOne() = Initializes the object of the data structure.
+    2. inc(String key) = Increments the count of the string key by 1. If key does not exist in the data structure, insert it with count 1.
+    3. dec(String key) = Decrements the count of the string key by 1. If the count of key is 0 after the decrement, remove it from the data structure.
        It is guaranteed that key exists in the data structure before the decrement.
-    getMaxKey() Returns one of the keys with the maximal count. If no element exists, return an empty string "".
-    getMinKey() Returns one of the keys with the minimum count. If no element exists, return an empty string "".
-    Note that each function must run in O(1) average time complexity.
+    4. getMaxKey() = Returns one of the keys with the maximal count. If no element exists, return an empty string "".
+    5. getMinKey() = Returns one of the keys with the minimum count. If no element exists, return an empty string "".
     
-     
+    Note that each function must run in O(1) average time complexity.
     
     Example 1:
     Input
@@ -33,6 +32,12 @@
     ----------------------------------------------------------------------------------------------------------------------------------    
     ------------------------------------------------------ Time Complexity: O(1) -----------------------------------------------------
     ----------------------------------------------------- Space Complexity: O(n) -----------------------------------------------------
+
+    1. Double LinkedList Structure; 
+    2. Each node is for a particular frequency;
+    3. The LinkedList is soreted from lowest to highest frequency Nodes.
+    4. Each node store all the string of that frequency.
+    5. HashMap<String, Node>; To retirve the node where that string is stored in O(1) time.
 */
 
 public class Node
@@ -72,7 +77,7 @@ public class AllOne {
 
             Node nextNode = node.next;
 
-            if(nextNode == tail || nextNode.freq != freq+1)
+            if(nextNode == tail || nextNode.freq != freq+1) // Node with (freq+1) doesn't exists
             {
                 Node newNode = new Node(freq+1);
                 newNode.keys.add(key);
@@ -84,22 +89,23 @@ public class AllOne {
 
                 map.put(key, newNode);
             }
-            else
+            else // nexNode with desired(freq+1) frequency exists
             {
                 nextNode.keys.add(key);
                 map.put(key, nextNode);
             }
 
-            if(node.keys.isEmpty())
+            if(node.keys.isEmpty()) // Delete original node?
             {
                 removeNode(node);
             }
         }
-        else
+        else // New String key; Currently not present in our DB
         {
+            // Add as 1st Node, freq = 1
             Node firstNode = head.next;
 
-            if(firstNode == tail || firstNode.freq > 1)
+            if(firstNode == tail || firstNode.freq > 1) // Node with freq = 1 doesn't exists
             {
                 Node newNode = new Node(1);
                 newNode.keys.add(key);
@@ -111,7 +117,7 @@ public class AllOne {
 
                 map.put(key, newNode);
             }
-            else
+            else // Node with freq = 1 already exists
             {
                 firstNode.keys.add(key);
                 map.put(key, firstNode);
@@ -137,7 +143,7 @@ public class AllOne {
         {
             Node prevNode = node.prev;
 
-            if(prevNode == head || prevNode.freq != freq-1)
+            if(prevNode == head || prevNode.freq != freq-1) // Node with (freq-1) doesn't exists
             {
                 Node newNode = new Node(freq-1);
                 newNode.keys.add(key);
@@ -149,14 +155,14 @@ public class AllOne {
 
                 map.put(key, newNode);
             }
-            else
+            else // Node with (freq-1) already exists
             {
                 prevNode.keys.add(key);
                 map.put(key, prevNode);
             } 
         }
 
-        if(node.keys.isEmpty())
+        if(node.keys.isEmpty()) // Delete original node?
         {
             removeNode(node);
         }
