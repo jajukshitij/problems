@@ -40,8 +40,13 @@ public class IntegerToRoman {
     public static String intToRoman(int num){
         int[] values = {1000,900,500,400,100,90,50,40,10,9,5,4,1};
         String[] symbol = {"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};
+        // IMPROVEMENT:Right now, every call re-allocates two arrays. 
+        // Marking them static final avoids reallocation and lets JVM intern/optimize them.
 
-        StringBuilder sb = new StringBuilder();
+        // Limit ranges from 1-3999; as per the rules of Roman number
+    
+        StringBuilder sb = new StringBuilder(); // IMPROVEMENT: presize to ~15
+                                        // To avoid dynamic resizing
 
         while(num>0){
             for(int i=0; i<values.length;i++){
